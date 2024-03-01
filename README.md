@@ -2,7 +2,7 @@
 
 ## Topic
 
-My project will be to develop and improve the code of my current research project, which is to estimate the rate of a rare hypothezised process at the IceCube neutrino observatory. The final product is a package with sphynx documentation that has a pytest script, profiling script and some simple application script.
+My project will be to develop and improve the code of my current research project, which is to estimate the rate of a rare hypothezised process at the IceCube neutrino observatory. The final product is a package with sphinx documentation that has a pytest script, profiling script and some simple application script.
 
 ## Background
 This project is part of a beyond standard model analysis at the IceCube neutrino observatory, which is a cube kilometer large neutrino detector buried 2 km deep in the antarctic ice (https://icecube.wisc.edu/). The detector is built to measure rare cosmic neutrino interactions a few times a year, but also detects the abundant atmospheric muon background at a rate of 3 kHz. The analysis searches for signatures of a hypothesized class of exotic particles called long lived particles (LLPs) in the background atmospheric muon flux. The LLPs could potentially be produced in a bremstrahlung-like process where the muon scatters of an oxygen or hydrogen in the ice. The LLP would then decay after some time, hopefully inside the detector in order to be detectable.
