@@ -1,3 +1,6 @@
+"""
+Simple example application of llpestimation package.
+"""
 from llpestimation import LLPModel, LLPEstimator, LLPMedium, LLPProductionCrossSection
 from estimation_utilities import *
 import numpy as np
@@ -6,7 +9,7 @@ import numpy as np
 def generate_atmospheric_muons(n = 10):
     steps = 50
     muons = []
-    for i in range(n):
+    for _ in range(n):
         length = float(np.random.randint(100,1000)) # random length in detector in meters
         energy = float(np.random.randint(500,2000)) # random energy of muon in GeV
         energy_list = np.linspace(energy, energy*0.5, steps) # unrealistic but whatever
