@@ -20,7 +20,7 @@ def create_test_DLS_model():
     # CREATE LLPProductionCrossSection
     # read in table
     df = pd.read_csv(path_to_table, names=["E0", "totcs"])
-    func_to_xsec = interp1d(df["E0"], eps**2*df["totcs"],kind="quadratic", bounds_error=False,fill_value=(0.0, None))
+    func_to_xsec = interp1d(df["E0"], eps**2*df["totcs"],kind="linear", bounds_error=False,fill_value=(0.0, None))
     n_oxygen = 6.02214076e23 * 0.92 / 18 # number density of oxygen in ice
     oxygen   = LLPMedium("O", n_oxygen, 8, 16)
     llp_xsec = LLPProductionCrossSection([func_to_xsec], [oxygen])
@@ -53,7 +53,7 @@ def test_llpxsec():
     # CREATE LLPProductionCrossSection
     # read in table
     df = pd.read_csv(path_to_table, names=["E0", "totcs"])
-    func_to_xsec = interp1d(df["E0"], eps**2*df["totcs"],kind="quadratic", bounds_error=False,fill_value=(0.0, None))
+    func_to_xsec = interp1d(df["E0"], eps**2*df["totcs"],kind="linear", bounds_error=False,fill_value=(0.0, None))
     llp_xsec = LLPProductionCrossSection([func_to_xsec], [oxygen])
 
     # create plot to show interpolation works
@@ -85,7 +85,7 @@ def test_llpmodel_creation():
     # CREATE LLPProductionCrossSection
     # read in table
     df = pd.read_csv(path_to_table, names=["E0", "totcs"])
-    func_to_xsec = interp1d(df["E0"], eps**2*df["totcs"],kind="quadratic", bounds_error=False,fill_value=(0.0, None))
+    func_to_xsec = interp1d(df["E0"], eps**2*df["totcs"],kind="linear", bounds_error=False,fill_value=(0.0, None))
     n_oxygen = 6.02214076e23 * 0.92 / 18 # number density of oxygen in ice
     oxygen   = LLPMedium("O", n_oxygen, 8, 16)
     llp_xsec = LLPProductionCrossSection([func_to_xsec], [oxygen])

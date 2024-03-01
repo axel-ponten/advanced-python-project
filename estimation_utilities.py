@@ -24,7 +24,7 @@ def generate_DLSModels(masses, epsilons, names, table_paths):
         tau = calculate_DLS_lifetime(mass, eps)
         # tot_xsec function from interpolation tables
         df = pd.read_csv(path, names=["E0", "totcs"])
-        func_tot_xsec = interp1d(df["E0"], eps**2*df["totcs"],kind="quadratic")
+        func_tot_xsec = interp1d(df["E0"], eps**2*df["totcs"],kind="linear")
         # create LLPProductionCrossSection
         llp_xsec = LLPProductionCrossSection([func_tot_xsec], [oxygen])
         # create new LLPModel
