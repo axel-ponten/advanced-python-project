@@ -1,3 +1,9 @@
+"""
+Collection of utility functions to implement llpestimation package,
+such as creation of dark leptonic scalar models (a type of LLP),
+or to generate interpolation functions from the tables.
+"""
+
 from llpestimation import LLPModel, LLPEstimator, LLPMedium, LLPProductionCrossSection
 from scipy.interpolate import interp1d
 import numpy as np
