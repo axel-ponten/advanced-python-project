@@ -1,6 +1,7 @@
 """
-@TODO: update docstring
-Classes used to estimate detectable LLP event probability.
+Class used to estimate detectable LLP event probability
+for a list of LLPModels given a muon represented
+by a list of energies along length segments in the detector.
 """
 import numpy as np
 

@@ -1,6 +1,7 @@
 class LLPProductionCrossSection():
     """
-    @TODO: add docstring
+    Class that contains an ordered list of production cross sections
+    and medium. Cross section takes GeV as input and outputs cm^2.
     """
     def __init__(self, func_tot_xsec_list: list, medium_list: list):
         self.func_tot_xsec_list = func_tot_xsec_list # input GeV energy, returns cm^2

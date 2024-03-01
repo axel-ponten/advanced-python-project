@@ -39,8 +39,9 @@
 </section>
 <section id="module-llpestimation.llpestimator">
 <span id="llpestimation-llpestimator-module"></span><h2>llpestimation.llpestimator module<a class="headerlink" href="#module-llpestimation.llpestimator" title="Permalink to this heading">¶</a></h2>
-<p>&#64;TODO: update docstring
-Classes used to estimate detectable LLP event probability.</p>
+<p>Class used to estimate detectable LLP event probability
+for a list of LLPModels given a muon represented
+by a list of energies along length segments in the detector.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="llpestimation.llpestimator.LLPEstimator">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">llpestimation.llpestimator.</span></span><span class="sig-name descname"><span class="pre">LLPEstimator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">llpmodels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_gap_meters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#llpestimation.llpestimator.LLPEstimator" title="Permalink to this definition">¶</a></dt>
@@ -111,6 +112,9 @@ approximation convolved with decay factor (partially integrated decay pdf).</p>
 </section>
 <section id="module-llpestimation.llpmodel">
 <span id="llpestimation-llpmodel-module"></span><h2>llpestimation.llpmodel module<a class="headerlink" href="#module-llpestimation.llpmodel" title="Permalink to this heading">¶</a></h2>
+<p>Class that represents a long lived particle (LLP) model.</p>
+<p>Defined by a name, mass, coupling, lifetime and production
+cross section.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="llpestimation.llpmodel.LLPModel">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">llpestimation.llpmodel.</span></span><span class="sig-name descname"><span class="pre">LLPModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mass</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">llp_xsec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#llpestimation.llpproductioncrosssection.LLPProductionCrossSection" title="llpestimation.llpproductioncrosssection.LLPProductionCrossSection"><span class="pre">LLPProductionCrossSection</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#llpestimation.llpmodel.LLPModel" title="Permalink to this definition">¶</a></dt>
@@ -212,7 +216,8 @@ Used to reconstruct the LLPModel (except cross section function).”</p>
 <dt class="sig sig-object py" id="llpestimation.llpproductioncrosssection.LLPProductionCrossSection">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">llpestimation.llpproductioncrosssection.</span></span><span class="sig-name descname"><span class="pre">LLPProductionCrossSection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func_tot_xsec_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medium_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#llpestimation.llpproductioncrosssection.LLPProductionCrossSection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>&#64;TODO: add docstring</p>
+<p>Class that contains an ordered list of production cross sections
+and medium. Cross section takes GeV as input and outputs cm^2.</p>
 <p class="rubric">Methods</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>

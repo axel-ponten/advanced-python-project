@@ -1,3 +1,9 @@
+"""
+Class that represents a long lived particle (LLP) model.
+
+Defined by a name, mass, coupling, lifetime and production
+cross section.
+"""
 import numpy as np
 from .llpproductioncrosssection import LLPProductionCrossSection
 
