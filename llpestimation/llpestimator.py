@@ -81,6 +81,6 @@ class LLPEstimator():
 
         :return dict: Returns a dict of detectable LLP probabilities mapped with LLPModel uniqueID.
         """
-        probabilities = self.calc_llp_probability_with_id(length_list, energy_list)
+        probabilities = self.calc_llp_probability(length_list, energy_list)
         map_id_probability = dict(zip(self.llpmodel_unique_ids, probabilities))
         return map_id_probability

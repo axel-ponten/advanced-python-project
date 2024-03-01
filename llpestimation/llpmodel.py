@@ -32,9 +32,17 @@ class LLPModel():
         :param gamma: Lorentz boost of the LLP. Given by E/m.
         :return float: Lifetime of the LLP in lab frame.
         """
+        # check for physical gamma
+        if isinstance(gamma, np.ndarray):
+            if np.any(gamma < 1.0):
+                raise ValueError("Lorentz boost can't be smaller than 1.")
+        else:
+            if gamma < 1.0:
+                raise ValueError("Lorentz boost can't be smaller than 1.")
+        # lorentz boost
         return self.tau * gamma
 
-    def decay_factor(self, l1: float, l2: float, energy: float) -> float:
+    def decay_factor(self, l1: np.ndarray[float], l2: np.ndarray[float], energy: np.ndarray[float]) -> np.ndarray[float]:
         """
         Probability to decay between lengths l1 and l2.
 
@@ -46,18 +54,23 @@ class LLPModel():
         :param energy: Energy of the LLP.
         :return float: Between 0-1. Fraction of the decay pdf within length l1 and l2.
         """
+        # decay length
         c_gamma_tau = 29979245800.0 * self.get_lifetime(energy/self.mass) # c [cm/s] * gamma * tau
+        # integrate decay pdf from l1 to l2
         prob = np.exp(-l1/c_gamma_tau) - np.exp(-l2/c_gamma_tau)
-        # check for negative values
+        # check that we have physical lengths and energies
+        bad_events = (l1 >= l2) | (l1 < 0) | (l2 <= 0) | (energy < 0)
+        # set unphysical events to 0
         if isinstance(prob, np.ndarray):
-            prob[prob < 0] = 0.0 # if l2 is shorter than l1, return 0
+            prob[bad_events] = 0.0
         else:
-            prob = max(prob, 0.0)
+            if bad_events:
+                prob = 0.0
         return prob
 
     def get_unique_id(self) -> str:
         # @TODO: how to include the cross section function?
-        """W
+        """
         Encodes the model in a underscore separated string.
         Used to reconstruct the LLPModel (except cross section function)."
         """
@@ -80,7 +93,7 @@ class LLPModel():
 
     def print_summary(self):
         """
-        For testing purposes.
+        Prints the attributes of the LLPModel.
         """
         print("unique ID:", self.unique_id)
         print("Parameters of model", self.name, ":")
@@ -88,6 +101,11 @@ class LLPModel():
         print("eps", self.eps)
         print("tau", self.tau)
         print("LLPProductionCrossSection", self.llp_xsec)
+
+    def test_calculations(self):
+        """
+        For testing purposes.
+        """
         if self.llp_xsec is None:
             print("cross section is None")
         else:
@@ -97,4 +115,3 @@ class LLPModel():
             )
             print("Test interaction per cm at 500 GeV", self.interactions_per_cm(500.0))
             print("Decay factor 500 GeV 50 to 800 m", self.decay_factor(50.0, 800.0, 500.0))
-
